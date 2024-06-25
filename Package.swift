@@ -4,20 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "adxr_lib",
+    name: "adxr_library",
+    platforms: [
+        .iOS(.v14),
+        .visionOS(.v1)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "adxr_lib",
-            targets: ["adxr_lib"]),
+            name: "adxr_library",
+            targets: ["adxr"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "adxr_lib"),
+        .binaryTarget(
+            name: "adxr",
+            path: "adxr.xcframework"
+        ),
         .testTarget(
-            name: "adxr_libTests",
-            dependencies: ["adxr_lib"]),
+            name: "adxr_libraryTests",
+            dependencies: ["adxr"]),
     ]
 )
